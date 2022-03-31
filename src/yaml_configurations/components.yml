@@ -1,0 +1,7 @@
+another_comp:
+  parameters:
+    capacity_another: test_value_capacity
+  class: Another
+bat_comp:
+  parameters: {}
+  class: Battery

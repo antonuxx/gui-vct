@@ -1,0 +1,94 @@
+{
+    "components" :
+    [
+        {
+            "type" : "Battery",
+            "parameters" :
+            {
+                "capacity" : "bla",
+                "param2" : "bla bla",
+                "test_inputs" : "<20",
+                "channels" : "<20",
+                "states" : "bla bla",
+                "ddd" : "testing"
+            },
+            "variables": {
+                "in" : [
+                    {
+                        "name": "input_analog",
+                        "enable_by": "ddd",
+                        "type": "MyClass"
+                    },
+                    {
+                        "name": "inputs_analog",
+                        "enable_by": "test_inputs",
+                        "type": "float"
+                    },
+                    {
+                        "name": "input_fixed",
+                        "type": "float"
+                    }
+                ],
+                "out": [
+                    {
+                        "name": "output_analog",
+                        "enable_by": "channels",
+                        "type": "float"
+                    },
+                    {
+                        "name": "output_power",
+                        "enable_by": "channels",
+                        "type": "float"
+                    }
+                ],
+                "state": [
+                    {
+                        "name": "state_power",
+                        "enable_by": "states",
+                        "type": "float"
+                    },
+                    {
+                        "name": "state_power",
+                        "enable_by": "channels",
+                        "type": "float"
+                    },
+                    {
+                        "name": "state_power",
+                        "type": "float"
+                    }
+                ]
+            }
+        },
+        {
+            "type" : "Another",
+            "parameters" :
+            {
+                "capacity_another" : "bla2",
+                "param2_another" : "bla2 bla2"
+            },
+            "variables": {
+                "in" : [
+                    {
+                        "name": "input_analog",
+                        "enable_by": "channels",
+                        "type": "MyClass"
+                    }
+                ],
+                "out": [
+                    {
+                        "name": "output_power",
+                        "enable_by": "channels",
+                        "type": "float"
+                    }
+                ],
+                "state": [
+                    {
+                        "name": "state_power",
+                        "enable_by": "channels",
+                        "type": "float"
+                    }
+                ]
+            }
+        }
+    ]
+}

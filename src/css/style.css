@@ -1,0 +1,189 @@
+/***********************************************************************************************//**
+ *  Defines the layout common style for the shared parts of the applicaiton.
+ *  @file       style.css
+ *  @author     Anton Villalonga, antonuxx@gmail.com
+ *  @date       2020-nov-20
+ *  @copyright  This file is part of a project developed at Nano-Satellite and Payload Laboratory
+ *              (NanoSat Lab), Universitat Politècnica de Catalunya - UPC BarcelonaTech.
+ **************************************************************************************************/
+
+#tab1.active
+{
+    background-color:white;
+}
+
+#tab2.active
+{
+    background-color:white;
+}
+
+#tab3.active
+{
+    background-color:white;
+}
+
+#tab3
+{
+    overflow-y: hidden;
+}
+
+#tab4.active
+{
+    background-color:white;
+    display: flex;
+    flex-flow: column;
+    height: 96%; /* to fit content */
+    overflow-y: auto;
+}
+
+#tab5.active
+{
+    background-color:white;
+}
+
+.toolbar2, .tab-group
+{
+    z-index: 3;
+    position: sticky;
+    top: 0;
+    border-bottom: 5px;
+}
+
+.table_margin_bottom
+{
+    margin-top: 10px;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+/* Style the button that is used to open and close the collapsible content */
+
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active
+{
+    background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content
+{
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+}
+
+.collapsible_group button, p
+{
+    display: inline-block;
+    z-index: 10;
+}
+
+.toolbar
+{
+    position: sticky;
+    top: 24px;
+    z-index: 3;
+}
+
+.btn_edit
+{
+    margin-left: 10px;
+}
+
+.btn-mini
+{
+    padding: 3px 3px;
+}
+
+.btn_close
+{
+    margin-left: 5px;
+}
+
+.pane-sm
+{
+    /*overflow: auto; */
+    resize: horizontal;
+    max-width: 300px;
+    background-color: #ececec;
+}
+
+.pane-sm .padded-more
+
+{
+    overflow-y: auto;
+    height: 96vh;
+}
+
+.centered
+{
+    text-align: center;
+}
+
+.btn-group
+{
+    margin-left: 5px;
+    margin-bottom: 3px;
+}
+
+.padded-bottom
+{
+    padding-bottom: 10px;
+}
+
+.padded-bottom-end
+{
+    margin-top: 10px;
+}
+
+.amount
+{
+    width: 12%;
+}
+
+.sidebar_content
+{
+    display: none;
+}
+
+.sidebar
+{
+    min-width: 191px; /* Problem with css, header does not fit scrollbar. */
+}
+
+.tree_box
+{
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+.tree_header
+{
+    display: flex;
+    flex-flow: column;
+    flex: 0 1 auto;
+}
+
+.tree_body
+{
+    overflow: auto;
+    flex-flow: column;
+    height: 100%;
+    flex: 1 1 auto;
+    resize: horizontal;
+    width: 191px;
+    min-width: inherit;
+    max-width: 300px;
+}
+
+#jstree_components
+{
+    display: block;
+}
+
+#jstree_sat_comps
+{
+    height: 50vh;
+}

@@ -1,0 +1,33 @@
+{
+  "name": "vct",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron src/index.js",
+    "test": "mocha test/components/spec.js",
+    "unit_components": "mocha test/components/unit.js",
+    "unit_satellite": "mocha test/satellite/unit.js",
+    "unit_system": "mocha test/system/unit.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sweetalert2/theme-minimal": "^4.0.3",
+    "chai": "^4.3.4",
+    "gl-matrix": "^3.3.0",
+    "jquery": "^3.5.1",
+    "js-yaml": "^4.0.0",
+    "jsdom": "^16.5.2",
+    "jstree": "^3.3.11",
+    "litegraph.js": "^0.7.8",
+    "photonkit": "^0.1.2",
+    "sweetalert2": "^10.15.5",
+    "webdriverio": "^7.0.7"
+  },
+  "devDependencies": {
+    "electron": "^11.4.12",
+    "mocha": "^8.3.0",
+    "spectron": "^13.0.0"
+  }
+}

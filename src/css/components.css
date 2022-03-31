@@ -1,0 +1,100 @@
+/***********************************************************************************************//**
+ *  Defines the layout style for components window of the applicaiton.
+ *  @file      components.css
+ *  @author     Anton Villalonga, antonuxx@gmail.com
+ *  @date       2020-nov-20
+ *  @copyright  This file is part of a project developed at Nano-Satellite and Payload Laboratory
+ *              (NanoSat Lab), Universitat Politècnica de Catalunya - UPC BarcelonaTech.
+ **************************************************************************************************/
+
+.components_header .toolbar
+{
+    height: auto;
+}
+
+.components_header_form
+{
+    padding: 10px;
+}
+
+#comp_id
+{
+    margin-right: 10px;
+}
+
+.btn_create
+{
+    margin-left: 15px;
+}
+
+.form_item
+{
+    display: inline;
+}
+.components_window_content
+{
+    height: 85vh;
+    overflow: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.comp_collapsible
+{
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    padding: 5px;
+    margin-top: 15px;
+}
+
+.collapsible_comp_id
+{
+    margin-right: 10px;
+}
+
+.input_comp_id
+{
+    display: none;
+    margin-right: 10px;
+}
+
+.comp_collapsible:hover
+{
+    background-color: #ccc;
+}
+
+.comp_collapsible:after
+{
+    margin-left: 10px;
+    content: '\25be';
+    color: black;
+}
+
+.comp_collapsible.active:after
+{
+    content: '\25b4';
+}
+
+#comp_tbl td, #comp_tbl th
+{
+    border: 1px solid #ddd;
+}
+
+#comp_tbl
+{
+  table-layout: fixed;
+  width: 100%;
+}
+
+#comp_tbl td
+{
+    white-space: normal;
+}

@@ -1,0 +1,539 @@
+<!-----------------------------------------------------------------------------------------------------
+*  Index-html main file, associated with index.css and index.js.
+*  @file       Index.html
+*  @author     Anton Villalonga, antonuxx@gmail.com
+*  @date       2020-nov-20
+*  @copyright  This file is part of a project developed at Nano-Satellite and Payload Laboratory
+*              (NanoSat Lab), Universitat Politècnica de Catalunya - UPC BarcelonaTech.
+----------------------------------------------------------------------------------------------------->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- jQuery -->
+    <script src="../node_modules/jquery/dist/jquery.js" charset="utf-8" defer></script>
+    <script type="text/javascript" defer>
+        window.$ = window.jQuery = require("jquery");
+    </script>
+
+    <!-- gl-matrix -->
+    <script src="../node_modules/gl-matrix/gl-matrix.js" charset="utf-8" defer></script>
+
+    <!-- sweetalert2 -->
+    <script src="../node_modules/sweetalert2/dist/sweetalert2.min.js" defer></script>
+    <link rel="stylesheet" href="../node_modules/@sweetalert2/theme-minimal/minimal.css">
+
+    <!-- Photon.css -->
+    <link rel="stylesheet" href="../node_modules/photonkit/dist/css/photon.css">
+
+    <!-- Tree view -->
+    <link rel="stylesheet" href="../node_modules/jstree/dist/themes/default/style.min.css">
+    <script src="../node_modules/jstree/dist/jstree.min.js" charset="utf-8" defer></script>
+
+    <!-- layout style -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- components -->
+    <link rel="stylesheet" href="css/components.css">
+    <script type="text/javascript" src="js/components/components_jstree.js" defer></script>
+    <script type="text/javascript" src="js/components/components.js" defer></script>
+
+    <!-- network -->
+    <link rel="stylesheet" href="css/network.css">
+    <script src="js/network/network.js" charset="utf-8" defer></script>
+
+    <!-- litegraph.js -->
+    <link rel="stylesheet" type="text/css" href="../node_modules/litegraph.js/css/litegraph.css">
+    <script type="text/javascript" src="../node_modules/litegraph.js/build/litegraph.js" defer></script>
+
+    <!-- satellite -->
+    <link rel="stylesheet" href="css/satellite.css">
+    <script src="js/satellite/nodes/sat_default.js" charset="utf-8" defer></script>
+    <script src="js/satellite/satellite_jstree.js" charset="utf-8" defer></script>
+    <script src="js/satellite/lgraph.js" charset="utf-8" defer></script>
+    <script src="js/satellite/satellite_content.js" charset="utf-8" defer></script>
+
+    <!-- system -->
+    <script type="text/javascript" src="js/system/system_jstree.js" defer></script>
+    <script type="text/javascript" src="js/system/system.js" defer></script>
+    <link rel="stylesheet" href="css/system.css">
+
+    <!-- globals -->
+    <script type="text/javascript" src="js/globals/globals.js" defer></script>
+    <link rel="stylesheet" href="css/globals.css">
+
+    <!--tabs-->
+    <link rel="stylesheet" href="css/tabs.css">
+    <script src="js/tabs.js" defer></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+    <div class="window">
+        <div class="pane-group">
+            <div class="pane-sm sidebar tree_box">
+                <div class="toolbar2 tab-item active tree_header">
+                    Configuration
+                </div>
+                <div class="tree_body">
+                    <div id="jstree_components" sidebar_contents class="sidebar_content">
+                    </div>
+                    <div id="jstree_network" sidebar_contents class="sidebar_content">
+                    </div>
+                    <div id="jstree_sat" sidebar_contents class="sidebar_content">
+                        <div id="jstree_sat_comps">
+
+                        </div>
+                        <div id="jstree_sat_list">
+                        </div>
+                    </div>
+                    <div id="jstree_system" sidebar_contents class="sidebar_content">
+                    </div>
+                    <div id="jstree_globals" sidebar_contents class="sidebar_content">
+                    </div>
+                </div>
+            </div>
+            <div class="pane">
+                <div id="tabs" class="tab-group">
+                    <div data-tab-target="#tab1" class="tab-item active" onclick="sidebar_content_comps()">
+                        Physical Components
+                    </div>
+                    <div data-tab-target="#tab2" class="tab-item" onclick="sidebar_content_net()">
+                        Protocol Components
+                    </div>
+                    <div id="test_sat_tab" data-tab-target="#tab3" class="tab-item" onclick="sidebar_content_sat()">
+                        Satellite
+                    </div>
+                    <div id="test_sys_tab" data-tab-target="#tab4" class="tab-item" onclick="sidebar_content_sys()">
+                        System
+                    </div>
+                    <div id="test_globals_tab" data-tab-target="#tab5" class="tab-item" onclick="sidebar_content_globals()">
+                        Globals
+                    </div>
+                </div>
+                <div id="tab1" data-tab-content class="active">
+                    <div class="components_header">
+                        <header class="toolbar">
+
+                            <h1 class="title"> Options </h1>
+                            <div class="components_header_form">
+                                <input id="comp_id" class="form_item" type="text"
+                                placeholder="Please insert a nameID">
+                                <label class="form_item" for="types">
+                                    Select the type:
+                                </label>
+                                <select class="form_item" id="comp_types" name="types">
+                                </select>
+                                <button type="submit"
+                                        value="Submit"
+                                        class="btn_create">
+                                        Create
+                                </button>
+                            </div>
+                        </header>
+                    </div>
+                    <div class="components_window_content">
+                    </div>
+                </div>
+                <div id="tab2" data-tab-content>
+                    <div class="network_header">
+                        <header class="toolbar">
+                            <h1 class="title"> Options </h1>
+                            <div class="network_header_form">
+                                <input id="comp_netID" class="form_item" type="text"
+                                placeholder="Please insert a nameID">
+                                <label class="form_item" for="types">
+                                    Select the type:
+                                </label>
+                                <select class="form_item" id="compnet_net_types" name="types">
+                                </select>
+                                <button type="submit"
+                                        value="Submit"
+                                        class="btn_create_net">
+                                        Create
+                                </button>
+                            </div>
+                        </header>
+                    </div>
+                    <div class="network_window_content">
+                        <div class="collapsible_group net_collapsible">
+                        <button type="button" class="btn btn-mini btn-default btn_close">
+                            <span class="icon icon-cancel pull-left"></span>
+                        </button>
+                        <button type="button" class="btn btn-mini btn-default edit_btn">
+                            <span class="icon icon-pencil"></span>
+                        </button>
+                        <p><b>Name: </b>Test Battery <b>Type: </b>Battery</p>
+                        </div>
+                        <div class="content">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th style="width: 15%;"><b>Parameter</b></th>
+                                        <th style="width: 15%;""><b>Type</b></th>
+                                        <th><b>Value</b></th>
+                                        <th style="width: 20%;"><b>Description</b></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Capacity</td>
+                                        <td>int</td>
+                                        <td>150</td>
+                                        <td>The capacity of the battery.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>param2</td>
+                                        <td>boolean</td>
+                                        <td><select>
+                                            <option>True</option>
+                                            <option>False</option>
+                                            </select></td>
+                                        <td>Set boolean status</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab3" data-tab-content>
+                    <div class="sat_header">
+                        <header class="toolbar">
+                            <h1 class="title"> Options </h1>
+                            <div class="sat_header_form">
+                                <input id="sat_id" class="form_item" type="text"
+                                placeholder="Please insert a nameID">
+                                <button type="submit"
+                                        value="Submit"
+                                        class="btn_create_sat">
+                                        Create
+                                </button>
+                            </div>
+                        </header>
+                    </div>
+                    <div class="canvas_div">
+                        <canvas id='sat_canvas'></canvas>
+                    </div>
+                </div>
+                <div id="tab4" data-tab-content>
+                    <div class="system_header">
+                        <header class="toolbar">
+                            <h1 class="title"> Options </h1>
+                            <div class="btn-group">
+                                <label id="system_label" for="constellations">Select new constellaion</label>
+                                <form>
+                                    <select class="form_item" id="const_types" name="types">
+                                        <option value="eq_form">Equidistant</option>
+                                        <option value="wp_form">Walker Pattern</option>
+                                        <option value="single_form" selected>Single</option>
+                                        <option value="tle_form">TLE</option>
+                                        <option value="rd_form">Randomly Distributed</option>
+                                    </select>
+                                </form>
+                            </div>
+                            <div id="eq_form" class="eq_form constellation">
+                                <div class="eq_id-div">
+                                    <label for="eq_id">Const ID:</label>
+                                    <input class="eq_id" name="eq_id" placeholder="myConst">
+                                </div>
+                                <form id="eq_first_form" class="eq_first_form">
+                                    <div class="padded-bottom">
+                                        <h5><b>MA</b></h5>
+                                        <label for="num_steps">Number of steps</label>
+                                        <input name="num_steps" placeholder="20">
+                                        <label for="steps_separation">Steps Separation</label>
+                                        <input name="steps_separation" placeholder="30">
+                                    </div>
+                                </form>
+                                <form id="eq_second_form" class="eq_second_form">
+                                    <div class="padded-bottom">
+                                        <h5><b>RAAN</b></h5>
+                                        <label for="num_steps">Number of steps</label>
+                                        <input name="num_steps" placeholder="5">
+                                        <label for="steps_separation">Steps Separation</label>
+                                        <input name="steps_separation" placeholder="20">
+                                    </div>
+                                </form>
+                                <div class="eq_div2 padded-bottom">
+                                    <label for="sat_types">Sat Type:</label>
+                                    <select name="sat_types">
+                                        <option value="equidistant">Sat1</option>
+                                        <option value="equidistant">Sat2</option>
+                                        <option value="walker_pattern">Anton</option>
+                                        <option value="manual">Sat3</option>
+                                        <option value="TLE">Sat4</option>
+                                    </select>
+                                    <label for="satnum">Sats Amount: 100</label>
+                                </div>
+                                <div class="eq_div3">
+                                    <label for="eq_inclination">Inclination:</label>
+                                    <input type="text" name="eq_inclination" placeholder="20">
+                                    <label for="eq_argp">Periapsis arg:</label>
+                                    <input type="text" name="eq_argp" placeholder="45">
+                                    <label for="eq_a">Semimajor axis:</label>
+                                    <input type="text" name="eq_a" placeholder="200">
+                                    <label for="eq_e">Eccentricity:</label>
+                                    <input type="text" name="eq_e" placeholder="0.45">
+                                </div>
+                                <div class="btn-group pull-left">
+                                    <button class="btn btn-default"><span class="icon icon-download"></span></button>
+                                    <button class="btn btn-default"><span class="icon icon-cancel-squared"></span></button>
+                                </div>
+                            </div>
+                            <div id="single_form" class="single_form constellation">
+                                <div class="single_id_div">
+                                    <label for="name">orbit-id: </label>
+                                    <input class="single_id" type="text" id="single_id" placeholder="orbit-id">
+                                    <label for="sat_types">Sat Type:</label>
+                                    <select id="sat_types">
+
+                                    </select>
+                                </div>
+                                <div class="single_form_items">
+                                    <label for="ecc">Ecc</label>
+                                    <input type="text" id="single_ecc" placeholder="0-1">
+                                    <label for="sma">Sma</label>
+                                    <input type="text" id="single_sma" placeholder="0-num">
+                                    <label for="incl">Incl</label>
+                                    <input type="text" id="single_incl" placeholder="0-180">
+                                    <label for="raan">raan</label>
+                                    <input type="text" id="single_raan" placeholder="0-360">
+                                    <label for="argp">argp</label>
+                                    <input type="text" id="single_argp" placeholder="0-90">
+                                    <label for="ma">Ma</label>
+                                    <input type="text" id="single_ma" placeholder="0-360">
+                                </div>
+                                <div class="btn-group padded-bottom-end pull-left">
+                                    <button id="create_single" class="btn btn-default"><span class="icon icon-download"></span></button>
+                                    <button id="clear_single" class="btn btn-default"><span class="icon icon-cancel-squared"></span></button>
+                                </div>
+                            </div>
+                            <div id="wp_form" class="wp_form constellation">
+                                <label for="wp_id">Const ID:</label>
+                                <input class="wp_id" name="wp_id" placeholder="myConst">
+                                <label for="sat_types">Sat Type:</label>
+                                <select name="sat_types">
+                                    <option value="equidistant">Sat1</option>
+                                    <option value="equidistant">Sat2</option>
+                                    <option value="walker_pattern">Anton</option>
+                                    <option value="manual">Sat3</option>
+                                    <option value="TLE">Sat4</option>
+                                </select>
+                                <form>
+                                    <label for="wp_i"><b>i: </b>Inclination:</label>
+                                    <input class="wp_i" name="wp_i" placeholder="45">
+                                    <label for="wp_satnum">Number of Sats per Plane:</label>
+                                    <input class="wp_satnum" name="wp_satnum" placeholder="30">
+                                    <label for="wp_p"><b>p: </b>Number of equally spaced planes:</label>
+                                    <input class="wp_p" name="wp_p" placeholder="40">
+                                    <label for="wp_f"><b>f: </b>Relative spacing between satellites:</label>
+                                    <input class="wp_f" name="wp_f" placeholder="20">
+                                </form>
+                                <div class="btn-group pull-left btn-group-div">
+                                    <button class="btn btn-default"><span class="icon icon-download"></span></button>
+                                    <button class="btn btn-default"><span class="icon icon-cancel-squared"></span></button>
+                                </div>
+                            </div>
+                            <div id="tle_form" class="tle_form constellation">
+                                <p>Drop/write TLE files: </p>
+                                <div id="drop_tle" class="drop_tle">
+                                </div>
+                                <div class="btn-group pull-left">
+                                    <button class="btn btn-default"><span class="icon icon-download"></span></button>
+                                    <button class="btn btn-default"><span class="icon icon-cancel-squared"></span></button>
+                                </div>
+                            </div>
+                            <div id="rd_form" class="rd_form constellation">
+                                <div class="rd_id_div">
+                                    <label for="rd_id">Const ID:</label>
+                                    <input class="rd_id" name="rd_id" placeholder="myConst">
+                                    <label for="sat_types">Sat Type:</label>
+                                    <select name="sat_types">
+                                        <option value="equidistant">Sat1</option>
+                                        <option value="equidistant">Sat2</option>
+                                        <option value="walker_pattern">Anton</option>
+                                        <option value="manual">Sat3</option>
+                                        <option value="TLE">Sat4</option>
+                                    </select>
+                                    <label for="amount">Amount:</label>
+                                    <input type="text" name="amount" placeholder="20">
+                                </div>
+                                <div class="rd_divs">
+                                    <div class="rd_div">
+                                        <label for="ecc-max">Eccentricity max:</label>
+                                        <input type="text" name="ecc-max" placeholder="20">
+                                        <label for="ecc-min">Eccentricity min:</label>
+                                        <input type="text" name="ecc-min" placeholder="10">
+                                    </div>
+                                    <div class="rd_div">
+                                        <label for="sma-max">Semimajor max:</label>
+                                        <input type="text" name="sma-max" placeholder="20">
+                                        <label for="ecc-min">Semimajor min:</label>
+                                        <input type="text" name="sma-min" placeholder="10">
+                                    </div>
+                                    <div class="rd_div">
+                                        <label for="incl-max">Inclination max:</label>
+                                        <input type="text" name="incl-max" placeholder="20">
+                                        <label for="ecc-min">Inclination min:</label>
+                                        <input type="text" name="incl-min" placeholder="10">
+                                    </div>
+                                    <div class="rd_div">
+                                        <label for="anl-max">AscendingNode max:</label>
+                                        <input type="text" name="ecc-max" placeholder="20">
+                                        <label for="anl-min">AscendingNode min:</label>
+                                        <input type="text" name="ecc-min" placeholder="10">
+                                    </div>
+                                    <div class="rd_div">
+                                        <label for="argp-max">PeriargpsisArg max:</label>
+                                        <input type="text" name="argp-max" placeholder="20">
+                                        <label for="argp-min">PeriapsisArg min:</label>
+                                        <input type="text" name="argp-min" placeholder="10">
+                                    </div>
+                                    <div class="rd_div">
+                                        <label for="ta-max">TrueAnomally max:</label>
+                                        <input type="text" name="argp-max" placeholder="20">
+                                        <label for="ta-min">TrueAnomally min:</label>
+                                        <input type="text" name="argp-min" placeholder="10">
+                                    </div>
+                                </div>
+                                <div class="btn-group pull-left">
+                                    <button class="btn btn-default"><span class="icon icon-download"></span></button>
+                                    <button class="btn btn-default"><span class="icon icon-cancel-squared"></span></button>
+                                </div>
+                            </div>
+                        </header>
+                    </div>
+                    <div id="table_div_system">
+                        <table id="system_tbl" class="table-stripped">
+                            <thead>
+                                <tr>
+                                    <th>Sat ID</th>
+                                    <th>Const ID</th>
+                                    <th>Ecc</th>
+                                    <th>Sma</th>
+                                    <th>Incl</th>
+                                    <th>Raan</th>
+                                    <th>Argp</th>
+                                    <th>Ma</th>
+                                    <th>Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody id="system_tbl_body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="tab5" data-tab-content>
+                    <header class="toolbar">
+                        <h1 class="title"> Options </h1>
+                        <div style="margin-left: 5px;" class="btn-group">
+                            <button id="save_configuration" class="btn btn-default">
+                                <span class="icon icon-download"></span>
+                            </button>
+                        </div>
+                    </header>
+                    <div class="globals_window_content">
+                        <div class="collapsible_group globals_collapsible">
+                        <p><b>Variable Group Name: </b>Test Group</p>
+                        </div>
+                        <div class="content">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th style="width: 15%;"><b>Parameter</b></th>
+                                        <th style="width: 15%;""><b>Type</b></th>
+                                        <th><b>Value</b></th>
+                                        <th style="width: 20%;"><b>Description</b></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Capacity</td>
+                                        <td>int</td>
+                                        <td>150</td>
+                                        <td>The capacity of the battery.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>param2</td>
+                                        <td>boolean</td>
+                                        <td><select>
+                                            <option>True</option>
+                                            <option>False</option>
+                                            </select></td>
+                                        <td>Set boolean status</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="collapsible_group globals_collapsible">
+                        <p><b>VCT</b></p>
+                        </div>
+                        <div class="content">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th style="width: 15%;"><b>Parameter</b></th>
+                                        <th style="width: 15%;""><b>Type</b></th>
+                                        <th><b>Value</b></th>
+                                        <th style="width: 20%;"><b>Description</b></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Capacity</td>
+                                        <td>int</td>
+                                        <td>150</td>
+                                        <td>The capacity of the battery.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>param2</td>
+                                        <td>boolean</td>
+                                        <td><select>
+                                            <option>True</option>
+                                            <option>False</option>
+                                            </select></td>
+                                        <td>Set boolean status</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="collapsible_group globals_collapsible">
+                        <p><b>VTS</b></p>
+                        </div>
+                        <div class="content">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th style="width: 15%;"><b>Parameter</b></th>
+                                        <th style="width: 15%;""><b>Type</b></th>
+                                        <th><b>Value</b></th>
+                                        <th style="width: 20%;"><b>Description</b></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Capacity</td>
+                                        <td>int</td>
+                                        <td>150</td>
+                                        <td>The capacity of the battery.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>param2</td>
+                                        <td>boolean</td>
+                                        <td><select>
+                                            <option>True</option>
+                                            <option>False</option>
+                                            </select></td>
+                                        <td>Set boolean status</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

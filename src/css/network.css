@@ -1,0 +1,64 @@
+/***********************************************************************************************//**
+ *  Defines the layout style for network window of the applicaiton.
+ *  @file       network.css
+ *  @author     Anton Villalonga, antonuxx@gmail.com
+ *  @date       2020-nov-20
+ *  @copyright  This file is part of a project developed at Nano-Satellite and Payload Laboratory
+ *              (NanoSat Lab), Universitat Politècnica de Catalunya - UPC BarcelonaTech.
+ **************************************************************************************************/
+
+.network_header .toolbar
+{
+    height: auto;
+}
+
+.network_header_form
+{
+    padding: 10px;
+}
+
+#comp_netID
+{
+    margin-right: 10px;
+}
+
+.network_window_content
+{
+    height: 85vh;
+    overflow: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.net_collapsible
+{
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    padding: 5px;
+    margin-top: 15px;
+}
+
+.net_collapsible:hover
+{
+    background-color: #ccc;
+}
+
+.net_collapsible:after
+{
+    margin-left: 10px;
+    content: '\25be';
+    color: black;
+}
+
+.net_collapsible.active:after
+{
+    content: '\25b4';
+}

@@ -1,0 +1,248 @@
+/***********************************************************************************************//**
+ *  Defines the layout style for system window of the applicaiton.
+ *  @file       system.css
+ *  @author     Anton Villalonga, antonuxx@gmail.com
+ *  @date       2020-nov-20
+ *  @copyright  This file is part of a project developed at Nano-Satellite and Payload Laboratory
+ *              (NanoSat Lab), Universitat Politècnica de Catalunya - UPC BarcelonaTech.
+ **************************************************************************************************/
+
+#system_tbl
+{
+    width: 100%;
+}
+
+.eq_form
+{
+    display: none;
+}
+
+.eq_form input
+{
+    width: 50px;
+}
+
+.eq_form label
+{
+    margin-left: 3px;
+    display: inline;
+}
+
+.eq_first_form, .eq_second_form  div
+{
+    margin-left: 10px;
+}
+
+.eq_first_form
+{
+    border: groove;
+    padding-right: 5px;
+    padding-left: 5px;
+    display: inline-block;
+    width: fit-content;
+    height: fit-content;
+}
+
+.eq_second_form
+{
+    display: inline-block;
+    width: fit-content;
+    height: fit-content;
+    border: groove;
+    padding-right: 5px;
+    margin-left: 10px;
+}
+
+.eq_div2
+{
+    margin-top: 5px;
+    margin-left: 10px;
+    display: block;
+}
+
+.eq_div3
+{
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+.eq_id
+{
+    width: fit-content !important;
+    margin-bottom: 10px;
+}
+
+.eq_id-div
+{
+    padding-left: 10px;
+    width: 100%;
+    display: block;
+}
+
+.btn-group-div
+{
+    margin-top: 10px;
+}
+
+.eq-btn-group
+{
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 7px;
+    margin-left: 10px;
+}
+
+.single_id_div
+{
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.single_id
+{
+    width: fit-content !important;
+}
+
+.single_form label
+{
+    margin-left: 10px;
+    display: inline;
+}
+
+.single_form input
+{
+    margin-top: 5px;
+    width: 50px;
+}
+
+.single_form form
+{
+    margin-bottom: 10px;
+}
+
+.rd_form
+{
+    display: none;
+}
+
+.rd_id_div
+{
+    display: block;
+    width: 100%;
+}
+
+.rd_id
+{
+    padding-left: 5px;
+    width: fit-content !important;
+}
+
+.rd_form input
+{
+    width: 50px;
+    margin-top: 5px;
+}
+
+.rd_form label
+{
+    margin-left: 5px;
+    display: inline;
+}
+
+.rd_divs
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 5px;
+}
+
+.rd_div
+{
+    width: 200px; /* this has to be set manually */
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.wp_form
+{
+    display: none;
+    width: fit-content;
+    height: fit-content;
+}
+
+.wp_form label
+{
+    margin-left: 10px;
+    display: inline;
+}
+
+.wp_form input
+{
+    margin-left: 5px;
+    margin-top: 5px;
+    width: 50px;
+}
+
+.wp-id
+{
+    width: fit-content !important;
+    margin-bottom: 10px;
+}
+
+.tle_form
+{
+    display: none;
+}
+
+.drop_tle
+{
+    background-color: white;
+    margin-right: 50px;
+    margin-left: 50px;
+    margin-bottom: 15px;
+    height: 200px;
+    border: ridge;
+}
+
+.tle_form p
+{
+    margin-left: 5px;
+}
+
+#table_div_system
+{
+    margin-left: 10px;
+    margin-top: 5px;
+    overflow-y: auto;
+}
+
+.constForms
+{
+    height: 60vh;
+    overflow-y: auto;
+}
+
+#system_tbl th
+{
+  background-color: #f5f5f4;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+#system_tbl th, td
+{
+    padding: 0.25rem;
+}
+
+.system_header .toolbar
+{
+    height: auto;
+}
+
+#system_label
+{
+    display: block;
+    margin-left: 10px;
+}

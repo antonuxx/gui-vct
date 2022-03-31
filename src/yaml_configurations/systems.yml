@@ -1,0 +1,26 @@
+system_a_edited:
+  space:
+    sat_a_1:
+      type: sat_a
+      orbit:
+        sma: 105
+        ecc: 0.7
+        inc: 55
+        raan: 75
+        argp: 55
+        ma: 75
+        td_single_id: system_a_edited
+      network:
+        adress: '00:00:00:00:00:02'
+    sat_a_0:
+      type: sat_a
+      orbit:
+        sma: 105
+        ecc: 0.7
+        inc: 55
+        raan: 75
+        argp: 55
+        ma: 75
+      network:
+        adress: '00:00:00:00:00:02'
+  ground: []

@@ -1,0 +1,18 @@
+/***********************************************************************************************//**
+ *  css that determines to show or not the contents of the tabs.
+ *  @file       tabs.js
+ *  @author     Anton Villalonga, antonuxx@gmail.com
+ *  @date       2020-nov-20
+ *  @copyright  This file is part of a project developed at Nano-Satellite and Payload Laboratory
+ *              (NanoSat Lab), Universitat Politècnica de Catalunya - UPC BarcelonaTech.
+ **************************************************************************************************/
+
+[data-tab-content]
+{
+  display: none;
+}
+
+.active[data-tab-content]
+{
+  display: block;
+}
